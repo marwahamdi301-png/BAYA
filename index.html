@@ -8,21 +8,22 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     
     <style>
-        /* كراسة الشروط: التصميم الملكي (أسود وذهبي) */
         :root { --gold: #D4AF37; --black: #0a0a0a; --white: #ffffff; }
-        body { background: var(--black); color: var(--white); font-family: sans-serif; margin: 0; text-align: center; }
-        .header { border-bottom: 2px solid var(--gold); padding: 20px; background: #111; }
-        .founder { color: var(--gold); font-size: 1.4rem; font-weight: bold; }
-        .card { background: #1a1a1a; margin: 15px; padding: 20px; border-radius: 10px; border: 1px solid #333; }
-        .btn { background: var(--gold); color: black; border: none; padding: 10px 20px; border-radius: 5px; font-weight: bold; cursor: pointer; width: 100%; margin-top: 10px; }
-        .lang-btn { font-size: 1.5rem; margin: 0 10px; cursor: pointer; }
+        body { background: var(--black); color: var(--white); font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; text-align: center; }
+        .header { border-bottom: 2px solid var(--gold); padding: 30px 20px; background: #111; box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2); }
+        .founder { color: var(--gold); font-size: 1.8rem; font-weight: bold; text-transform: uppercase; letter-spacing: 2px; }
+        .card { background: #1a1a1a; margin: 20px auto; padding: 25px; border-radius: 15px; border: 1px solid #333; max-width: 90%; transition: 0.3s; }
+        .card:hover { border-color: var(--gold); }
+        .btn { background: var(--gold); color: black; border: none; padding: 12px 25px; border-radius: 8px; font-weight: bold; cursor: pointer; width: 100%; font-size: 1.1rem; margin-top: 15px; }
+        .lang-btn { font-size: 1.8rem; margin: 0 15px; cursor: pointer; filter: grayscale(0.5); transition: 0.3s; }
+        .lang-btn:hover { filter: grayscale(0); transform: scale(1.2); }
     </style>
 </head>
 <body>
 
     <div class="header">
         <div class="founder">JAMEL CHABANI</div>
-        <small>BAYA EMPIRE FOUNDER</small>
+        <div style="color: #888; margin-top: 5px;">إمبراطورية بايا | BAYA EMPIRE</div>
     </div>
 
     <div class="card">
@@ -32,45 +33,45 @@
     </div>
 
     <div class="card">
-        <h3 id="kyc-title">حلول KYC 🛡️</h3>
-        <p id="kyc-desc">مركز دعم المعدنين لتجاوز مشاكل التوثيق.</p>
-        <button class="btn" onclick="showHelp()">فتح الدليل المترجم</button>
+        <h3 id="kyc-title">دعم توثيق الهوية (KYC) 🛡️</h3>
+        <p id="kyc-desc">حلول تقنية للمعدنين لتجاوز مشاكل التوثيق في شبكة باي.</p>
+        <button class="btn" onclick="showHelp()">تواصل مع الدعم الفني</button>
     </div>
 
     <div class="card">
-        <h3>رادار الإمبراطورية 📡</h3>
-        <div style="display: flex; justify-content: space-around; font-size: 2rem;">
-            <a href="https://x.com" style="color: var(--gold);"><i class="fab fa-x-twitter"></i></a>
-            <a href="https://tiktok.com" style="color: var(--gold);"><i class="fab fa-tiktok"></i></a>
+        <h3>متابعة الإمبراطورية 📡</h3>
+        <div style="display: flex; justify-content: space-around; font-size: 2.5rem; margin-top: 10px;">
+            <a href="#" style="color: var(--gold);"><i class="fab fa-x-twitter"></i></a>
+            <a href="#" style="color: var(--gold);"><i class="fab fa-tiktok"></i></a>
         </div>
     </div>
 
     <script>
-        // --- إعدادات الهوية التقنية للإمبراطورية ---
+        // --- بيانات الهوية الرسمية ---
         const PI_USER = "marwahamdi301"; 
         const APP_WALLET = "GA35IKNW7L36ZVLVOZ6GRVZPHJGG3UICQDJVY3ZL4EBYTB2NBP2XHXXNFO";
 
-        // نظام الترجمة والتحكم
+        // نظام التحكم والترجمة
         function setLang(lang) {
             const t = {
-                ar: { title: "حلول KYC 🛡️", desc: "دعم المعدنين لتجاوز مشاكل التوثيق." },
-                vi: { title: "Giải pháp KYC 🇻🇳", desc: "Hỗ trợ thợ đào Việt Nam vượt qua lỗi xác minh." },
-                id: { title: "Solusi KYC 🇮🇩", desc: "Dukungan penambang Indonesia untuk verifikasi." }
+                ar: { title: "دعم توثيق الهوية (KYC) 🛡️", desc: "حلول تقنية للمعدنين لتجاوز مشاكل التوثيق في شبكة باي." },
+                vi: { title: "Hỗ trợ KYC 🇻🇳", desc: "Giải pháp kỹ thuật để vượt qua lỗi xác minh danh tính." },
+                id: { title: "Dukungan KYC 🇮🇩", desc: "Solusi teknis bagi penambang untuk melewati masalah verifikasi." }
             };
             document.getElementById('kyc-title').innerText = t[lang].title;
             document.getElementById('kyc-desc').innerText = t[lang].desc;
         }
 
         function showHelp() { 
-            alert("مرحباً يا " + PI_USER + "، جاري الاتصال بالمحفظة..."); 
+            alert("أهلاً بك في BAYA EMPIRE. معرف المستخدم: " + PI_USER + "\nجاري تهيئة الاتصال بالمحفظة..."); 
         }
         
-        // تفعيل الربط مع شبكة باي
+        // ربط تطبيق Pi
         try {
-            Pi.init({ version: "2.0", sandbox: true });
-            console.log("Pi SDK initialized for BAYA EMPIRE");
+            Pi.init({ version: "2.0", sandbox: false });
+            console.log("BAYA EMPIRE Loaded Successfully");
         } catch (err) {
-            console.error("Pi SDK error:", err);
+            console.error("SDK Error:", err);
         }
     </script>
 </body>
