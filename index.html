@@ -8,7 +8,6 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     
     <style>
-        /* كراسة الشروط: التصميم الملكي (أسود وذهبي) */
         :root { --gold: #D4AF37; --black: #0a0a0a; --white: #ffffff; }
         body { background: var(--black); color: var(--white); font-family: sans-serif; margin: 0; text-align: center; }
         .header { border-bottom: 2px solid var(--gold); padding: 20px; background: #111; }
@@ -33,7 +32,7 @@
 
     <div class="card">
         <h3 id="kyc-title">حلول KYC 🛡️</h3>
-        <p id="kyc-desc">مركز دعم المعدنين بدون نود لتجاوز مشاكل التوثيق.</p>
+        <p id="kyc-desc">مركز دعم المعدنين لتجاوز مشاكل التوثيق.</p>
         <button class="btn" onclick="showHelp()">فتح الدليل المترجم</button>
     </div>
 
@@ -46,19 +45,25 @@
     </div>
 
     <script>
-        // نظام الترجمة والتحكم
+        // بيانات الهوية التقنية (User & Wallet)
+        const PI_USER = "marwahamdi301"; 
+        const APP_WALLET = "GA35IKNW7L36ZVLVOZ6GRVZPHJGG3UICQDJVY3ZL4EBYTB2NBP2XHXXNFO";
+
         function setLang(lang) {
             const t = {
-                ar: { title: "حلول KYC 🛡️", desc: "دعم المعدنين العرب لتجاوز مشاكل التوثيق." },
-                vi: { title: "Giải pháp KYC 🇻🇳", desc: "Hỗ trợ thợ đào Việt Nam vượt qua lỗi xác minh." },
-                id: { title: "Solusi KYC 🇮🇩", desc: "Dukungan penambang Indonesia untuk verifikasi." }
+                ar: { title: "حلول KYC 🛡️", desc: "دعم المعدنين لتجاوز مشاكل التوثيق." },
+                vi: { title: "Giải pháp KYC 🇻🇳", desc: "Hỗ trợ thợ đào vượt qua lỗi xác minh." },
+                id: { title: "Solusi KYC 🇮🇩", desc: "Dukungan penambang untuk verifikasi." }
             };
             document.getElementById('kyc-title').innerText = t[lang].title;
             document.getElementById('kyc-desc').innerText = t[lang].desc;
         }
-        function showHelp() { alert("جاري تحميل الدليل المخصص لهاتفك..."); }
+
+        function showHelp() { 
+            alert("مرحباً " + PI_USER + "، المحفظة مفعلة."); 
+        }
         
-        // تفعيل الربط مع شبكة باي
+        // ربط المشروع مع SDK
         Pi.init({ version: "2.0", sandbox: true });
     </script>
 </body>
