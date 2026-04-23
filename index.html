@@ -9,76 +9,45 @@
     <style>
         body { 
             background: #000; color: #D4AF37; 
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
-            margin: 0; padding: 20px;
-            text-align: center;
+            font-family: 'Segoe UI', Arial, sans-serif; 
+            margin: 0; padding: 20px; text-align: center;
+            overflow-x: hidden;
         }
-        .header { 
-            border-bottom: 2px solid #D4AF37; 
-            padding: 20px 0; 
-            margin-bottom: 30px; 
-        }
-        .logo { font-size: 2.2em; font-weight: bold; letter-spacing: 2px; }
-        .founder { font-size: 0.9em; color: #fff; opacity: 0.8; margin-top: 5px; }
+        .header { border-bottom: 2px solid #D4AF37; padding: 20px 0; margin-bottom: 30px; }
+        .logo { font-size: 2.2em; font-weight: bold; }
+        .founder { font-size: 0.9em; color: #fff; opacity: 0.8; }
         
         .card { 
             background: linear-gradient(145deg, #1a1a1a, #050505);
-            border: 1px solid #D4AF37; 
-            border-radius: 15px;
-            padding: 25px; 
-            margin-bottom: 20px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.8), inset 0 0 10px rgba(212, 175, 55, 0.1);
+            border: 1px solid #D4AF37; border-radius: 15px;
+            padding: 25px; margin-bottom: 20px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.8);
         }
         
-        .balance-value { 
-            font-size: 2.5em; 
-            color: #fff; 
-            margin: 15px 0;
-            font-weight: bold;
-            text-shadow: 0 0 10px rgba(255,255,255,0.3);
-        }
-        
-        .status-box { 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center;
-            border-top: 1px solid #333;
-            padding-top: 15px;
-            margin-top: 15px;
-        }
-
-        .market-price { font-size: 1.2em; color: #fff; }
+        .balance-value { font-size: 2.5em; color: #fff; margin: 15px 0; font-weight: bold; }
         
         button {
             background: linear-gradient(to bottom, #D4AF37, #B8860B);
-            color: #000;
-            border: none; 
-            padding: 18px; 
-            border-radius: 50px;
-            width: 100%; 
-            font-weight: bold; 
-            font-size: 1.2em;
-            cursor: pointer; 
-            transition: 0.3s;
-            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
-            margin-top: 10px;
-        }
-        
-        button:active { transform: scale(0.98); box-shadow: none; }
-
-        .sync-btn {
-            background: transparent;
-            color: #D4AF37;
-            border: 1px solid #D4AF37;
-            padding: 8px 15px;
-            font-size: 0.8em;
-            width: auto;
-            border-radius: 5px;
-            margin-bottom: 10px;
+            color: #000; border: none; padding: 18px; border-radius: 50px;
+            width: 100%; font-weight: bold; font-size: 1.2em; cursor: pointer;
+            transition: 0.3s; box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
         }
 
-        .footer-links { margin-top: 40px; }
-        .footer-links a { color: #888; text-decoration: none; font-size: 0.85em; }
+        /* شريط الأخبار المتحرك */
+        .news-ticker {
+            position: fixed; bottom: 0; left: 0; width: 100%;
+            background: rgba(212, 175, 55, 0.1);
+            border-top: 1px solid #D4AF37;
+            white-space: nowrap; overflow: hidden; padding: 10px 0;
+            color: #fff; font-size: 0.9em;
+        }
+        .news-content {
+            display: inline-block; animation: scroll 20s linear infinite;
+        }
+        @keyframes scroll {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
     </style>
 </head>
 <body>
@@ -89,23 +58,20 @@
     </div>
 
     <div class="card">
-        <h3 style="margin: 0; color: #D4AF37;">المحفظة الملكية (Pi Wallet)</h3>
-        <div class="balance-value" id="wallet-balance">0.00 <span style="font-size: 0.4em; color: #D4AF37;">Pi</span></div>
-        <button class="sync-btn" onclick="syncWallet()">🔄 تحديث الرصيد</button>
-        <p style="font-size: 0.8em; color: #888; margin: 0;">حالة التزامن: <span style="color: #00ff00;">آمن ✅</span></p>
+        <h3 style="margin: 0;">المحفظة الملكية (Pi Wallet)</h3>
+        <div class="balance-value" id="wallet-balance">0.00 Pi</div>
+        <button style="width:auto; padding: 8px 15px; font-size: 0.8em;" onclick="syncWallet()">🔄 تحديث الرصيد</button>
     </div>
 
     <div class="card">
-        <div class="status-box">
-            <span>سعر Pi المتوقع:</span>
-            <span class="market-price">$314,159</span>
-        </div>
-        <p id="market-status" style="color: #00ff00; margin-top: 15px; font-weight: bold;">حالة السوق: انتظار الأمر...</p>
+        <p id="market-status" style="color: #00ff00; font-weight: bold;">حالة السوق: انتظار الأمر...</p>
         <button onclick="startBot()">تفعيل المحرك الذكي</button>
     </div>
 
-    <div class="footer-links">
-        <a href="privacy.html">سياسة الخصوصية والأمان الفيدرالية</a>
+    <div class="news-ticker">
+        <div class="news-content" id="news-text">
+            جاري جلب آخر أخبار Pi Network... السعر العالمي مستقر... نظام BAYA مؤمن بالكامل...
+        </div>
     </div>
 
     <script src="bot-core.js"></script>
