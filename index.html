@@ -4,29 +4,60 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <title>BAYA EMPIRE</title>
     <style>
-        body { background: #000; color: #D4AF37; font-family: sans-serif; text-align: center; padding: 20px; }
-        .gold-border { border: 2px solid #D4AF37; border-radius: 15px; padding: 20px; margin: 10px; }
-        .logo { font-size: 2.5em; font-weight: bold; margin-bottom: 5px; }
-        .founder { font-size: 0.8em; color: #fff; margin-bottom: 20px; }
-        button { background: #D4AF37; color: #000; border: none; padding: 15px 30px; border-radius: 10px; font-weight: bold; width: 100%; cursor: pointer; }
+        body { 
+            background: #000; color: #D4AF37; 
+            font-family: 'Segoe UI', Arial, sans-serif; 
+            margin: 0; padding: 20px;
+        }
+        .header { border-bottom: 2px solid #D4AF37; padding: 15px; margin-bottom: 25px; }
+        .logo { font-size: 2em; font-weight: bold; }
+        .founder { font-size: 0.8em; color: #fff; opacity: 0.8; }
+        
+        .card { 
+            background: linear-gradient(145deg, #1a1a1a, #000);
+            border: 1px solid #D4AF37; border-radius: 12px;
+            padding: 20px; margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2);
+        }
+        
+        .status-box { display: flex; justify-content: space-between; align-items: center; }
+        .price { font-size: 1.4em; color: #fff; font-weight: bold; }
+        
+        button {
+            background: #D4AF37; color: #000;
+            border: none; padding: 18px; border-radius: 30px;
+            width: 100%; font-weight: bold; font-size: 1.1em;
+            cursor: pointer; transition: 0.3s;
+            box-shadow: 0 5px 10px rgba(0,0,0,0.5);
+        }
+        button:hover { background: #fff; }
     </style>
 </head>
 <body>
-    <div class="logo">🔱 BAYA EMPIRE 🔱</div>
-    <div class="founder">BY: JAMEL CHABANI</div>
-    
-    <div class="gold-border">
-        <h3>بوت التداول الآلي</h3>
-        <p>حالة النظام: <span style="color: #00ff00;">نشط</span></p>
+
+    <div class="header">
+        <div class="logo">🔱 BAYA EMPIRE 🔱</div>
+        <div class="founder">FOUNDER: JAMEL CHABANI</div>
+    </div>
+
+    <div class="card">
+        <div class="status-box">
+            <span>سعر Pi المتوقع:</span>
+            <span class="price">$314,159</span>
+        </div>
+        <p id="market-status" style="color: #00ff00; margin-top: 15px;">حالة السوق: انتظار الأمر...</p>
+    </div>
+
+    <div class="card">
+        <h3>التحكم في الإمبراطورية</h3>
         <button onclick="startBot()">تفعيل المحرك الذكي</button>
     </div>
 
-    <div class="gold-border">
-        <h3>إدارة المحفظة</h3>
-        <p>الرصيد المرتبط: Pi Wallet</p>
-        <button onclick="location.href='privacy.html'">سياسة الخصوصية</button>
+    <div style="margin-top: 30px;">
+        <a href="privacy.html" style="color: #888; text-decoration: none; font-size: 0.8em;">سياسة الخصوصية والأمان</a>
     </div>
 
     <script src="bot-core.js"></script>
