@@ -9,31 +9,76 @@
     <style>
         body { 
             background: #000; color: #D4AF37; 
-            font-family: 'Segoe UI', Arial, sans-serif; 
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
             margin: 0; padding: 20px;
+            text-align: center;
         }
-        .header { border-bottom: 2px solid #D4AF37; padding: 15px; margin-bottom: 25px; }
-        .logo { font-size: 2em; font-weight: bold; }
-        .founder { font-size: 0.8em; color: #fff; opacity: 0.8; }
+        .header { 
+            border-bottom: 2px solid #D4AF37; 
+            padding: 20px 0; 
+            margin-bottom: 30px; 
+        }
+        .logo { font-size: 2.2em; font-weight: bold; letter-spacing: 2px; }
+        .founder { font-size: 0.9em; color: #fff; opacity: 0.8; margin-top: 5px; }
         
         .card { 
-            background: linear-gradient(145deg, #1a1a1a, #000);
-            border: 1px solid #D4AF37; border-radius: 12px;
-            padding: 20px; margin-bottom: 20px;
-            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2);
+            background: linear-gradient(145deg, #1a1a1a, #050505);
+            border: 1px solid #D4AF37; 
+            border-radius: 15px;
+            padding: 25px; 
+            margin-bottom: 20px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.8), inset 0 0 10px rgba(212, 175, 55, 0.1);
         }
         
-        .status-box { display: flex; justify-content: space-between; align-items: center; }
-        .price { font-size: 1.4em; color: #fff; font-weight: bold; }
+        .balance-value { 
+            font-size: 2.5em; 
+            color: #fff; 
+            margin: 15px 0;
+            font-weight: bold;
+            text-shadow: 0 0 10px rgba(255,255,255,0.3);
+        }
+        
+        .status-box { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center;
+            border-top: 1px solid #333;
+            padding-top: 15px;
+            margin-top: 15px;
+        }
+
+        .market-price { font-size: 1.2em; color: #fff; }
         
         button {
-            background: #D4AF37; color: #000;
-            border: none; padding: 18px; border-radius: 30px;
-            width: 100%; font-weight: bold; font-size: 1.1em;
-            cursor: pointer; transition: 0.3s;
-            box-shadow: 0 5px 10px rgba(0,0,0,0.5);
+            background: linear-gradient(to bottom, #D4AF37, #B8860B);
+            color: #000;
+            border: none; 
+            padding: 18px; 
+            border-radius: 50px;
+            width: 100%; 
+            font-weight: bold; 
+            font-size: 1.2em;
+            cursor: pointer; 
+            transition: 0.3s;
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
+            margin-top: 10px;
         }
-        button:hover { background: #fff; }
+        
+        button:active { transform: scale(0.98); box-shadow: none; }
+
+        .sync-btn {
+            background: transparent;
+            color: #D4AF37;
+            border: 1px solid #D4AF37;
+            padding: 8px 15px;
+            font-size: 0.8em;
+            width: auto;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        .footer-links { margin-top: 40px; }
+        .footer-links a { color: #888; text-decoration: none; font-size: 0.85em; }
     </style>
 </head>
 <body>
@@ -44,20 +89,23 @@
     </div>
 
     <div class="card">
-        <div class="status-box">
-            <span>سعر Pi المتوقع:</span>
-            <span class="price">$314,159</span>
-        </div>
-        <p id="market-status" style="color: #00ff00; margin-top: 15px;">حالة السوق: انتظار الأمر...</p>
+        <h3 style="margin: 0; color: #D4AF37;">المحفظة الملكية (Pi Wallet)</h3>
+        <div class="balance-value" id="wallet-balance">0.00 <span style="font-size: 0.4em; color: #D4AF37;">Pi</span></div>
+        <button class="sync-btn" onclick="syncWallet()">🔄 تحديث الرصيد</button>
+        <p style="font-size: 0.8em; color: #888; margin: 0;">حالة التزامن: <span style="color: #00ff00;">آمن ✅</span></p>
     </div>
 
     <div class="card">
-        <h3>التحكم في الإمبراطورية</h3>
+        <div class="status-box">
+            <span>سعر Pi المتوقع:</span>
+            <span class="market-price">$314,159</span>
+        </div>
+        <p id="market-status" style="color: #00ff00; margin-top: 15px; font-weight: bold;">حالة السوق: انتظار الأمر...</p>
         <button onclick="startBot()">تفعيل المحرك الذكي</button>
     </div>
 
-    <div style="margin-top: 30px;">
-        <a href="privacy.html" style="color: #888; text-decoration: none; font-size: 0.8em;">سياسة الخصوصية والأمان</a>
+    <div class="footer-links">
+        <a href="privacy.html">سياسة الخصوصية والأمان الفيدرالية</a>
     </div>
 
     <script src="bot-core.js"></script>
